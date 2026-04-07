@@ -41,3 +41,29 @@ export function isWithinCone(targetBearing: number, referenceBearing: number, co
     }
     return diff <= (coneAngle / 2);
 }
+/**
+ * Calculates the cross-track distance in km of a point from a great-circle path.
+ * A positive dXt means the point is to the right of the path, a negative dXt to the left.
+ */
+export function getCrossTrackDistance(startLat: number, startLng: number, destLat: number, destLng: number, pointLat: number, pointLng: number): number {
+    const R = 6371; // Earth radius in km
+    const d13 = getDistanceAngular(startLat, startLng, pointLat, pointLng);
+    const theta13 = toRad(getBearing(startLat, startLng, pointLat, pointLng));
+    const theta12 = toRad(getBearing(startLat, startLng, destLat, destLng));
+
+    const dXt = Math.asin(Math.sin(d13) * Math.sin(theta13 - theta12)) * R;
+    return dXt;
+}
+
+/**
+ * Calculates angular distance (in radians) between two points
+ */
+function getDistanceAngular(lat1: number, lon1: number, lat2: number, lon2: number): number {
+    const dLat = toRad(lat2 - lat1);
+    const dLon = toRad(lon2 - lon1);
+    const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return c;
+}

@@ -12,6 +12,7 @@ type Tab = 'dashboard' | 'plan' | 'calc' | 'list';
 function App() {
   const [localChargers, setLocalChargers] = useState<Charger[]>([])
   const [ocmChargers, setOcmChargers] = useState<Charger[]>([])
+  const [customChargers, setCustomChargers] = useState<Charger[]>([])
   const [userLoc, setUserLoc] = useState<[number, number] | null>(null)
   
   const [activeTab, setActiveTab] = useState<Tab>('dashboard');
@@ -36,6 +37,13 @@ function App() {
         if (Array.isArray(parsed) && parsed.length === 2) {
           setUserLoc(parsed as [number, number]);
         }
+      } catch (e) { }
+    }
+
+    const cachedCustom = localStorage.getItem('customChargers');
+    if (cachedCustom) {
+      try {
+        setCustomChargers(JSON.parse(cachedCustom));
       } catch (e) { }
     }
 
@@ -88,7 +96,18 @@ function App() {
 
   }, [userLoc]);
 
-  const allChargers = [...localChargers, ...ocmChargers];
+  const addCustomCharger = (newCharger: Omit<Charger, 'id' | 'source'>) => {
+    const charger: Charger = {
+      ...newCharger,
+      id: `custom-${Date.now()}`,
+      source: 'local' // Treat custom as local for routing
+    };
+    const updated = [...customChargers, charger];
+    setCustomChargers(updated);
+    localStorage.setItem('customChargers', JSON.stringify(updated));
+  };
+
+  const allChargers = [...localChargers, ...ocmChargers, ...customChargers];
 
   return (
     <div className="min-h-screen pb-24 bg-slate-950 font-sans text-slate-200">
@@ -141,6 +160,7 @@ function App() {
             userLoc={userLoc} 
             chargers={allChargers} 
             safeRange={safeRange} 
+            onAddCharger={addCustomCharger}
           />
         </div>
       </main>
