@@ -6,13 +6,13 @@ export default function NearestCharger({ userLoc, chargers }: { userLoc: [number
     let minDistance = Infinity;
 
     if (userLoc && chargers.length > 0) {
-        chargers.forEach(c => {
+        for (const c of chargers) {
             const dist = getDistance(userLoc[0], userLoc[1], c.lat, c.lng);
             if (dist < minDistance) {
                 minDistance = dist;
                 nearest = c;
             }
-        });
+        }
     }
 
     const isOutOfSafeRange = minDistance > 180;
