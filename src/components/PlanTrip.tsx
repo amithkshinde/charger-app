@@ -120,7 +120,7 @@ export default function PlanTrip({ userLoc, chargers, batteryPercent, aec, safeR
                 viableChargers = viableChargers.filter(c => 
                     c.distance > 40 && 
                     c.distance <= safeRangeRemaining && 
-                    c.crossTrack <= 15 && // Accounting for highway curves
+                    c.crossTrack <= 5 && // Strict 5km detour limit as requested
                     c.angleDiff < 90 // Moving forward
                 );
 
