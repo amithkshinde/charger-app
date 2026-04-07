@@ -1,0 +1,695 @@
+[
+  {
+    "id": "1",
+    "name": "Statiq Charging Station",
+    "lat": 14.5499223,
+    "lng": 77.6259593,
+    "address": "HJ2G+28Q, Anantapur, Hampapuram, Andhra Pradesh 515722",
+    "phone": "1800 833 2233",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "2",
+    "name": "VVR SRI SRINIVASA GRAND \"MULBAGAL DOSA\"",
+    "lat": 13.1940395,
+    "lng": 78.5404002,
+    "address": "toll plaza, Bengaluru - Tirupati Hwy, near Nangali, Bengaluru, N. Yeluvahalli, Karnataka 563132",
+    "phone": "099866 32304",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "3",
+    "name": "Tata Power Charging Station",
+    "lat": 15.76089,
+    "lng": 77.465787,
+    "address": "QF68+983, Adoni - Yemmiganur Rd, Venkatapuram, Yemmiganur, KURNOOL, Andhra Pradesh 518360",
+    "phone": "1800 833 2233",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "4",
+    "name": "Big Bay India | Highway Pitstop",
+    "lat": 13.6050714,
+    "lng": 77.7870199,
+    "address": "Sy no. 458, Yelagalahalli Village, Hobli, Mandikal, Peresandra, Karnataka 562104",
+    "phone": "063660 17777",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "5",
+    "name": "Kapoor’s Cafe – Pure Veg Punjabi Restaurant | Bangalore Hyderabad Highway | Penukonda",
+    "lat": 14.0787827,
+    "lng": 77.6095392,
+    "address": "Sy no. 458, Yelagalahalli Village, Hobli, Mandikal, Peresandra, Karnataka 562104",
+    "phone": "063660 17777",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "6",
+    "name": "Statiq charging station",
+    "lat": 16.7666656,
+    "lng": 78.1249016,
+    "address": "Q48F+MWH, karnool Road, NH 44, Jadcherla, Telangana 509301",
+    "phone": "",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "7",
+    "name": "GLIDA Charging Station",
+    "lat": 17.2440796,
+    "lng": 78.4736648,
+    "address": "Q48F+MWH, karnool Road, NH 44, Jadcherla, Telangana 509301",
+    "phone": "",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "8",
+    "name": "Thunder Plus Charging Station",
+    "lat": 17.2440796,
+    "lng": 78.4736648,
+    "address": "12-114/20, near Masjid E Ameena, Hyderabad, Kurmalguda, Telangana 501510",
+    "phone": "",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "9",
+    "name": "Thunder Plus Charging Station",
+    "lat": 17.5434837,
+    "lng": 78.2617068,
+    "address": "No 50A, Sy, Industrial Area, Patancheruvu, Hyderabad, Telangana 502319",
+    "phone": "073375 55238",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "10",
+    "name": "Tata Power Charging Station",
+    "lat": 14.5499223,
+    "lng": 77.6259593,
+    "address": "HJ2G+28Q, Anantapur, Hampapuram, Andhra Pradesh 515722",
+    "phone": "1800 833 2233",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "11",
+    "name": "Electric Vehicle Charging Station",
+    "lat": 13.6093422,
+    "lng": 77.5080349,
+    "address": "HJ2G+28Q, Anantapur, Hampapuram, Andhra Pradesh 515722",
+    "phone": "1800 833 2233",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "12",
+    "name": "VKC GRAND LODGE",
+    "lat": 15.9413404,
+    "lng": 77.4236792,
+    "address": "JG55+P6M, Gauribidanur, Karnataka 561208",
+    "phone": "",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "13",
+    "name": "GPS RESIDENCY(SREE GURU PAVANASUTA RESIDENCY)",
+    "lat": 15.9387187,
+    "lng": 77.4242401,
+    "address": "JG55+P6M, Gauribidanur, Karnataka 561208",
+    "phone": "",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "14",
+    "name": "Hindustan Petroleum Corporation Limited",
+    "lat": 17.9158885,
+    "lng": 77.4613165,
+    "address": "JG55+P6M, Gauribidanur, Karnataka 561208",
+    "phone": "",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "15",
+    "name": "Hindustan Petroleum Corporation Limited",
+    "lat": 17.6976882,
+    "lng": 77.4330842,
+    "address": "JG55+P6M, Gauribidanur, Karnataka 561208",
+    "phone": "",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "16",
+    "name": "AG&P Pratham CNG Station",
+    "lat": 17.4222802,
+    "lng": 76.8853629,
+    "address": "Ground Floor, NH 65, Markunda, Karnataka 585227",
+    "phone": "094810 59798",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "17",
+    "name": "E-Fill Charging Station",
+    "lat": 17.4222802,
+    "lng": 76.8853629,
+    "address": "Ground Floor, NH 65, Markunda, Karnataka 585227",
+    "phone": "094810 59798",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "18",
+    "name": "Hindustan Petroleum Corporation Limited",
+    "lat": 17.4222802,
+    "lng": 76.8853629,
+    "address": "Ground Floor, NH 65, Markunda, Karnataka 585227",
+    "phone": "094810 59798",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "19",
+    "name": "ChargeZone x TATA.ev MegaCharger",
+    "lat": 17.4222802,
+    "lng": 76.8853629,
+    "address": "Survey No. 146, Sugureshwar Petroleum M/s HPCL, M/s, Aurad (B) Village, Kalaburagi, Karnataka 585104",
+    "phone": "094484 77761",
+    "capacity": "Ultra Fast Charger"
+  },
+  {
+    "id": "20",
+    "name": "IndianOil",
+    "lat": 17.4222802,
+    "lng": 76.8853629,
+    "address": "Survey No. 146, Sugureshwar Petroleum M/s HPCL, M/s, Aurad (B) Village, Kalaburagi, Karnataka 585104",
+    "phone": "094484 77761",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "21",
+    "name": "Statiq Charging Station",
+    "lat": 17.771616,
+    "lng": 77.114227,
+    "address": ":left side of the main entrance gate, NH-65Ho, Bidar, Humnabad, Karnataka 585330",
+    "phone": "080707 43743",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "22",
+    "name": "Hindustan Petroleum Corporation Limited",
+    "lat": 17.2998189,
+    "lng": 76.8361437,
+    "address": "Survey No 37, 4 & 37/5, Naganalli, Kalaburagi, Karnataka 585102",
+    "phone": "094497 99444",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "23",
+    "name": "ElectricPe Charging Station",
+    "lat": 16.7492636,
+    "lng": 77.1299776,
+    "address": "Parking of hotel slv, Yadagiri - Chittapur Rd, Yadgiri, Karnataka 585202",
+    "phone": "",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "24",
+    "name": "Statiq Charging Station",
+    "lat": 17.7945685,
+    "lng": 77.4214308,
+    "address": "SH 15, Bidar Mannakheli, Highway, Villag, Kadwad, Bidar, Karnataka 585226",
+    "phone": "",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "25",
+    "name": "ChargeZone Charging Station",
+    "lat": 17.7380629,
+    "lng": 77.3351677,
+    "address": "Bambalgi, Mumbai Hwy, nearby Hotel 24, Mannaekhelli, Bidar, Karnataka 585227",
+    "phone": "1800 121 2025",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "26",
+    "name": "Tata Power Charging Station",
+    "lat": 17.3742031,
+    "lng": 76.8546995,
+    "address": "9VF3+MVP, Humnabad Rd, Industrial Area, Kapnoor, Kalaburagi, Karnataka 585104",
+    "phone": "1800 833 2233",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "27",
+    "name": "Tata Power Charging Station",
+    "lat": 17.275221,
+    "lng": 76.874667,
+    "address": "7VGF+3VM, Shahbad Rd, Nandoor K, Kalaburagi, Karnataka 585228",
+    "phone": "1800 833 2233",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "28",
+    "name": "Tata Power Charging Station",
+    "lat": 17.308455,
+    "lng": 76.815353,
+    "address": "891/72A, 1, New Jewargi Rd, Karuneshwar Nagar, Kalaburagi, Karnataka 585102",
+    "phone": "1800 833 2233",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "29",
+    "name": "Hindustan Petroleum Corporation Limited",
+    "lat": 16.2085666,
+    "lng": 77.3463384,
+    "address": "Ground Floor, Vishweshwariah Road, Haji Colony, Raichur, Karnataka 584101",
+    "phone": "094484 85439",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "30",
+    "name": "YoCharge Charging Station",
+    "lat": 16.2080898,
+    "lng": 77.3525212,
+    "address": "35/5, Gandhi Chowk, Haji Colony, Raichur, Karnataka 584101",
+    "phone": "090793 76241",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "31",
+    "name": "Tata Power Charging Station",
+    "lat": 16.206762,
+    "lng": 77.329888,
+    "address": "684H+PX2, Lingsugur road, opposite agricultural university, Daft Colony, Housing Board, Askihal, Raichur, Karnataka 584101",
+    "phone": "",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "32",
+    "name": "Joulepoint Charging Station",
+    "lat": 15.9404632,
+    "lng": 77.4236027,
+    "address": "WCRF+5CQ Hotel Abode, Mantralayam, Andhra Pradesh 518345",
+    "phone": "",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "33",
+    "name": "Voltran Charging Station",
+    "lat": 13.6454941,
+    "lng": 79.4272523,
+    "address": "18-8-43/E2, Tirumala Bypass Rd, Srinivasa Nagar, Madura Nagar, Tirupati, Andhra Pradesh 517507",
+    "phone": "078001 74001",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "34",
+    "name": "VOLTRAN Charging Station",
+    "lat": 13.6454941,
+    "lng": 79.4272523,
+    "address": "18-8-43/E2, Tirumala Bypass Rd, Srinivasa Nagar, Madura Nagar, Tirupati, Andhra Pradesh 517507",
+    "phone": "078001 74001",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "35",
+    "name": "VOLTRAN Charging Station",
+    "lat": 16.1568949,
+    "lng": 77.9249875,
+    "address": "18-8-43/E2, Tirumala Bypass Rd, Srinivasa Nagar, Madura Nagar, Tirupati, Andhra Pradesh 517507",
+    "phone": "078001 74001",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "36",
+    "name": "Tata Power Charging Station",
+    "lat": 14.6574265,
+    "lng": 77.5813928,
+    "address": "Temple, NH44, adj. Udupi Sri Vihar Restaurant, near to Beechupalli, Beechupalli, Telangana 509133",
+    "phone": "078001 74001",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "37",
+    "name": "Tata Power Charging Station",
+    "lat": 14.6574265,
+    "lng": 77.5813928,
+    "address": "MH4J+XHC, NH 44, Srinagar Colony, Kakkalapalle Rural, Andhra Pradesh 515004",
+    "phone": "1800 833 2233",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "38",
+    "name": "BPCL Charging Station",
+    "lat": 14.6574265,
+    "lng": 77.5813928,
+    "address": "MH4J+XHC, NH 44, Srinagar Colony, Kakkalapalle Rural, Andhra Pradesh 515004",
+    "phone": "1800 833 2233",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "39",
+    "name": "Tata Power Charging Station",
+    "lat": 14.6574265,
+    "lng": 77.5813928,
+    "address": "MH4J+XHC, NH 44, Srinagar Colony, Kakkalapalle Rural, Andhra Pradesh 515004",
+    "phone": "1800 833 2233",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "40",
+    "name": "ChargeZone Charging Station",
+    "lat": 17.5975517,
+    "lng": 78.0560745,
+    "address": "MH4J+XHC, NH 44, Srinagar Colony, Kakkalapalle Rural, Andhra Pradesh 515004",
+    "phone": "1800 833 2233",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "41",
+    "name": "Adani Charging Station",
+    "lat": 17.0027253,
+    "lng": 78.1941884,
+    "address": "H3W4+WFP, Malkapur, Telangana 502295",
+    "phone": "1800 833 2233",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "42",
+    "name": "Tata Power Charging Station",
+    "lat": 16.7931491,
+    "lng": 78.1410315,
+    "address": "H3W4+WFP, Malkapur, Telangana 502295",
+    "phone": "1800 833 2233",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "43",
+    "name": "LionCharge Charging Station",
+    "lat": 16.7931491,
+    "lng": 78.1410315,
+    "address": "253V+3MW, Shadnagar, Raikal, Telangana 509202",
+    "phone": "",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "44",
+    "name": "Tata Power Charging Station",
+    "lat": 16.7444428,
+    "lng": 78.1015416,
+    "address": "253V+3MW, Shadnagar, Raikal, Telangana 509202",
+    "phone": "",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "45",
+    "name": "GLIDA Charging Station",
+    "lat": 16.5251238,
+    "lng": 77.940067,
+    "address": "253V+3MW, Shadnagar, Raikal, Telangana 509202",
+    "phone": "",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "46",
+    "name": "Gentari Charging Station",
+    "lat": 16.5251238,
+    "lng": 77.940067,
+    "address": "253V+3MW, Shadnagar, Raikal, Telangana 509202",
+    "phone": "",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "47",
+    "name": "Tata Power Charging Station",
+    "lat": 16.5251238,
+    "lng": 77.940067,
+    "address": "253V+3MW, Shadnagar, Raikal, Telangana 509202",
+    "phone": "",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "48",
+    "name": "Tata Power Charging Station",
+    "lat": 15.7570234,
+    "lng": 78.0176741,
+    "address": "253V+3MW, Shadnagar, Raikal, Telangana 509202",
+    "phone": "",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "49",
+    "name": "Tata Power Charging Station",
+    "lat": 15.02395,
+    "lng": 77.620628,
+    "address": "253V+3MW, Shadnagar, Raikal, Telangana 509202",
+    "phone": "",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "50",
+    "name": "Jio-bp pulse Charging Station",
+    "lat": 14.6995367,
+    "lng": 77.5886303,
+    "address": "253V+3MW, Shadnagar, Raikal, Telangana 509202",
+    "phone": "",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "51",
+    "name": "Tata Power Charging Station",
+    "lat": 12.9952672,
+    "lng": 76.0794582,
+    "address": "253V+3MW, Shadnagar, Raikal, Telangana 509202",
+    "phone": "",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "52",
+    "name": "MTR - Thirumalapura - BM Road",
+    "lat": 12.9698878,
+    "lng": 76.8014627,
+    "address": "253V+3MW, Shadnagar, Raikal, Telangana 509202",
+    "phone": "",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "53",
+    "name": "Jio-bp pulse Charging Station",
+    "lat": 12.9332483,
+    "lng": 76.4026202,
+    "address": "253V+3MW, Shadnagar, Raikal, Telangana 509202",
+    "phone": "",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "54",
+    "name": "Tata Power Charging Station",
+    "lat": 12.9332483,
+    "lng": 76.4026202,
+    "address": "Bandadka - Bengaluru Rd, Belasinda, Karnataka 573116",
+    "phone": "1800 890 9023",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "55",
+    "name": "Zeon Charging Station",
+    "lat": 12.9332483,
+    "lng": 76.4026202,
+    "address": "Bandadka - Bengaluru Rd, Belasinda, Karnataka 573116",
+    "phone": "1800 890 9023",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "56",
+    "name": "Zeon Charging Station",
+    "lat": 12.9288253,
+    "lng": 75.7650893,
+    "address": "Hotel Samrat Grand, B M, Road, Anemahal, Karnataka 573134",
+    "phone": "076766 00900",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "57",
+    "name": "THE AURUM SUBRAHMANYA",
+    "lat": 12.6756727,
+    "lng": 75.60904,
+    "address": "Hotel Samrat Grand, B M, Road, Anemahal, Karnataka 573134",
+    "phone": "076766 00900",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "58",
+    "name": "Paakashala @ Yediyur | Restaurants near Yediyur",
+    "lat": 12.6756727,
+    "lng": 75.60904,
+    "address": "Hotel Samrat Grand, B M, Road, Anemahal, Karnataka 573134",
+    "phone": "076766 00900",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "59",
+    "name": "Hotel Mayur Pavithra Yediyur",
+    "lat": 12.6756727,
+    "lng": 75.60904,
+    "address": "agrahara, someshwara temple road, kukke, Subramanya, Karnataka 574238",
+    "phone": "089510 42121",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "60",
+    "name": "Adyar Ananda Bhavan - A2B",
+    "lat": 12.6756727,
+    "lng": 75.60904,
+    "address": "agrahara, someshwara temple road, kukke, Subramanya, Karnataka 574238",
+    "phone": "089510 42121",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "61",
+    "name": "Tata Power Charging Station",
+    "lat": 16.4266263,
+    "lng": 77.93916,
+    "address": "NH 44 ; Banglore - Hyderabad Hwy, Kanimetta, Kothakota, Telangana 509381",
+    "phone": "1800 833 2233",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "62",
+    "name": "Sheshnaag Aashraya",
+    "lat": 12.6650022,
+    "lng": 75.612985,
+    "address": "Car Street, opposite New K.S.R.T.C Bus stand, Subramanya, Karnataka 574238",
+    "phone": "097409 01255",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "63",
+    "name": "Electric Vehicle Charging Station",
+    "lat": 12.8354114,
+    "lng": 75.3994378,
+    "address": "Car Street, opposite New K.S.R.T.C Bus stand, Subramanya, Karnataka 574238",
+    "phone": "097409 01255",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "64",
+    "name": "Tata Power Charging Station",
+    "lat": 12.8354114,
+    "lng": 75.3994378,
+    "address": "R9PX+5R5, Post Nelyadi,Nh 75,Dakshin Kannada, near Bharat Petrol Pump, Nelyadi, Karnataka 574229",
+    "phone": "1800 22 4344",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "65",
+    "name": "Zeon Charging Station",
+    "lat": 12.9952336,
+    "lng": 76.9001524,
+    "address": "R9PX+5R5, Post Nelyadi,Nh 75,Dakshin Kannada, near Bharat Petrol Pump, Nelyadi, Karnataka 574229",
+    "phone": "1800 22 4344",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "66",
+    "name": "Adani Charging Station",
+    "lat": 12.9413291,
+    "lng": 76.3501083,
+    "address": "XWW2+328, Zeon charging , Swathi delecacy , NH 75, Koppa, Yadiyur, Karnataka 572142",
+    "phone": "097896 16161",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "67",
+    "name": "Tata Power Charging Station",
+    "lat": 12.9559,
+    "lng": 75.850308,
+    "address": "Indraprastha Pure Veg, NH 75, Taluk, near Udayapura, Hobli, Dandiganahalli, Channarayapatna, Karnataka 573116",
+    "phone": "",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "68",
+    "name": "Zeon Charging Station",
+    "lat": 12.9872638,
+    "lng": 76.2062513,
+    "address": "Indraprastha Pure Veg, NH 75, Taluk, near Udayapura, Hobli, Dandiganahalli, Channarayapatna, Karnataka 573116",
+    "phone": "",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "69",
+    "name": "Zeon Charging Station",
+    "lat": 12.9289369,
+    "lng": 75.7651615,
+    "address": "Indraprastha Pure Veg, NH 75, Taluk, near Udayapura, Hobli, Dandiganahalli, Channarayapatna, Karnataka 573116",
+    "phone": "",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "70",
+    "name": "IndianOil",
+    "lat": 12.9289369,
+    "lng": 75.7651615,
+    "address": "Hotel Samrat Grand, B M Road, Anemahal, Karnataka 573134",
+    "phone": "",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "71",
+    "name": "ChargeZone Charging Station",
+    "lat": 14.6486203,
+    "lng": 77.5818588,
+    "address": "Hotel Samrat Grand, B M Road, Anemahal, Karnataka 573134",
+    "phone": "",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "72",
+    "name": "Gentari Charging Station",
+    "lat": 16.8150173,
+    "lng": 78.1482741,
+    "address": "Hotel Samrat Grand, B M Road, Anemahal, Karnataka 573134",
+    "phone": "",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "73",
+    "name": "Statiq Charging Station",
+    "lat": 15.8868807,
+    "lng": 78.0180704,
+    "address": "R48X+282 Kumbakonam degree coffee, Driftnation, Jadcherla, Gollapalle, Telangana 509302",
+    "phone": "011 4084 6012",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "74",
+    "name": "Tata Power Charging Station",
+    "lat": 15.8868807,
+    "lng": 78.0180704,
+    "address": "V2P9+Q64, Kurnool Rd, Puluru, Kurnool, Andhra Pradesh 509153",
+    "phone": "",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "75",
+    "name": "GLIDA Charging Station",
+    "lat": 14.0710391,
+    "lng": 77.6054054,
+    "address": "V2P9+Q64, Kurnool Rd, Puluru, Kurnool, Andhra Pradesh 509153",
+    "phone": "",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "76",
+    "name": "Zeon Charging Station",
+    "lat": 14.0710391,
+    "lng": 77.6054054,
+    "address": "3JC4+84X, Srinagar - Kanyakumari Hwy, Penukonda, Andhra Pradesh 515110",
+    "phone": "",
+    "capacity": "Standard Charger"
+  },
+  {
+    "id": "77",
+    "name": "Statiq x TATA.ev MegaCharger",
+    "lat": 13.7497905,
+    "lng": 77.7881648,
+    "address": "3JC4+84X, Srinagar - Kanyakumari Hwy, Penukonda, Andhra Pradesh 515110",
+    "phone": "",
+    "capacity": "Ultra Fast Charger"
+  }
+]
