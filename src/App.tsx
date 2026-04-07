@@ -10,6 +10,10 @@ function App() {
   const [ocmChargers, setOcmChargers] = useState<Charger[]>([])
   const [userLoc, setUserLoc] = useState<[number, number] | null>(null)
 
+  // Global car parameters
+  const [batteryPercent, setBatteryPercent] = useState<number>(100);
+  const [aec, setAec] = useState<number>(140);
+
   // 1. Initialize LocalStorage caching & fetch local json
   useEffect(() => {
     const cachedLoc = localStorage.getItem('lastKnownLoc');
@@ -87,9 +91,21 @@ function App() {
 
         <EvMapView userLoc={userLoc} chargers={allChargers} />
 
-        <CarStatus userLoc={userLoc} chargers={allChargers} />
+        <CarStatus 
+          userLoc={userLoc} 
+          chargers={allChargers} 
+          batteryPercent={batteryPercent}
+          setBatteryPercent={setBatteryPercent}
+          aec={aec}
+          setAec={setAec}
+        />
 
-        <ChargingAssistant />
+        <ChargingAssistant 
+          batteryPercent={batteryPercent}
+          setBatteryPercent={setBatteryPercent}
+          aec={aec}
+          setAec={setAec}
+        />
 
         <footer className="pt-8 pb-4 text-center text-slate-500 text-xs md:text-sm">
           Powered by React • Leaflet • Open Charge Map (Free)

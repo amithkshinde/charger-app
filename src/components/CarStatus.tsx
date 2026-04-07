@@ -5,12 +5,14 @@ import { getDistance } from '../utils/distance';
 interface CarStatusProps {
     userLoc: [number, number] | null;
     chargers: Charger[];
+    batteryPercent: number;
+    setBatteryPercent: (val: number) => void;
+    aec: number;
+    setAec: (val: number) => void;
 }
 
-export default function CarStatus({ userLoc, chargers }: CarStatusProps) {
+export default function CarStatus({ userLoc, chargers, batteryPercent, setBatteryPercent, aec, setAec }: CarStatusProps) {
     const [isCollapsed, setIsCollapsed] = useState(false);
-    const [batteryPercent, setBatteryPercent] = useState<number>(100);
-    const [aec, setAec] = useState<number>(140);
     const [dashRange, setDashRange] = useState<number>(240); // For reference only
 
     // Math calculation logic
