@@ -102,13 +102,12 @@ export default function PlanTrip({ userLoc, chargers, batteryPercent, aec, safeR
                     break;
                 }
 
-                // Filter chargers using Highway Path Cross-Track math (15km limit)
+                // Filter chargers using Highway Path Cross-Track math (5km limit)
                 const localChargers = chargers.filter(c => c.source === 'local' && c.lat && c.lng);
                 
                 let viableChargers = localChargers.map(c => {
                     const dist = getDistance(currentLat, currentLng, c.lat, c.lng);
                     const dtTrack = Math.abs(getCrossTrackDistance(currentLat, currentLng, destLat, destLng, c.lat!, c.lng!));
-                    // Check if it's forward (angle check)
                     const bearToDest = getBearing(currentLat, currentLng, destLat, destLng);
                     const bearToCharger = getBearing(currentLat, currentLng, c.lat!, c.lng!);
                     let angleDiff = Math.abs(bearToDest - bearToCharger) % 360;
@@ -120,24 +119,21 @@ export default function PlanTrip({ userLoc, chargers, batteryPercent, aec, safeR
                 viableChargers = viableChargers.filter(c => 
                     c.distance > 40 && 
                     c.distance <= safeRangeRemaining && 
-                    c.crossTrack <= 5 && // Strict 5km detour limit as requested
-                    c.angleDiff < 90 // Moving forward
+                    c.crossTrack <= 5 && 
+                    c.angleDiff < 90 
                 );
 
                 if (viableChargers.length === 0) {
                     throw new Error("NO CHARGERS FOUND ON THIS ROUTE. Please check your shortlisted list.");
                 }
 
-                // Optimization: Aim for ~140km hop if available, otherwise furthest possible within safe bounds
                 const targetHop = Math.min(140, safeRangeRemaining - 10);
                 viableChargers.sort((a, b) => Math.abs(a.distance - targetHop) - Math.abs(b.distance - targetHop));
 
                 const optimalStop = viableChargers[0];
-
                 const energyUsed = (optimalStop.distance * aec) / 1000;
                 const arrivalPercent = Math.max(0, currentSOC - ((energyUsed / availableEnergyFull) * 100));
                 
-                // Calculate time to reach 80% (assuming 25kW avg)
                 const energyNeededTo80 = Math.max(0, (0.80 - arrivalPercent / 100) * availableEnergyFull);
                 const chargeTime = Math.round((energyNeededTo80 / 25) * 60);
 
@@ -157,12 +153,8 @@ export default function PlanTrip({ userLoc, chargers, batteryPercent, aec, safeR
 
                 currentLat = optimalStop.charger.lat!;
                 currentLng = optimalStop.charger.lng!;
-                currentSOC = 80; // Charge to 80% as per user standard
+                currentSOC = 80; 
                 safeRangeRemaining = absoluteMaxSafeRange; 
-            }
-
-            if (iterations === MAX_ITERATIONS) {
-                throw new Error("Route is too complex (exceeded limit).");
             }
 
             setItinerary(stops);
@@ -188,69 +180,86 @@ export default function PlanTrip({ userLoc, chargers, batteryPercent, aec, safeR
     };
 
     return (
-        <div className="bg-slate-900/80 p-6 md:p-8 rounded-3xl shadow-2xl border-2 border-slate-700/50 backdrop-blur-md mb-6 transition-all w-full">
-            <h2 className="text-xl md:text-2xl font-bold flex items-center gap-3 text-white m-0 mb-6">
-                <svg className="w-6 h-6 md:w-8 md:h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" /></svg>
-                Ultimate Trip Planner
+        <div className="glass-card p-6 md:p-8 rounded-[2.5rem] shadow-2xl w-full">
+            <h2 className="text-xl md:text-2xl font-black flex items-center gap-3 text-white m-0 uppercase italic tracking-tighter mb-8">
+                <svg className="w-6 h-6 md:w-8 md:h-8 text-electric-mint" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" /></svg>
+                Trip Planner
             </h2>
 
-            <div className="bg-slate-950/40 p-5 rounded-xl border border-slate-700/30 mb-6 flex flex-col md:flex-row gap-4 items-end">
+            <div className="bg-white/[0.02] p-6 rounded-3xl border border-white/5 mb-8 space-y-4">
                 <div className="flex-1 w-full">
-                    <label className="text-slate-400 text-sm mb-2 block font-medium">Destination</label>
+                    <label className="text-slate-500 text-[10px] uppercase tracking-widest mb-3 block font-black">Destination</label>
                     <input 
                         type="text" 
-                        placeholder="e.g. Mantralayam"
+                        placeholder="ENTER CITY / LANDMARK"
                         value={destName} 
                         onChange={(e) => setDestName(e.target.value)}
-                        className="w-full bg-slate-800 text-white font-bold px-4 py-3 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none border border-slate-600 transition-all shadow-inner"
+                        className="w-full bg-transparent text-white text-xl font-black focus:text-electric-mint outline-none transition-all placeholder:text-slate-700"
                         onKeyDown={(e) => e.key === 'Enter' && calculateRoute()}
                     />
                 </div>
                 <button 
                     onClick={calculateRoute}
                     disabled={isCalculating || !destName.trim()}
-                    className="w-full md:w-auto bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 text-white font-bold px-8 py-3 rounded-xl transition-colors shadow-lg"
+                    className="w-full btn-automotive bg-electric-mint/10 border border-electric-mint/20 text-electric-mint hover:bg-electric-mint/20 text-sm italic tracking-widest uppercase disabled:opacity-30 disabled:pointer-events-none"
                 >
-                    {isCalculating ? 'Routing...' : 'Plan Route'}
+                    {isCalculating ? 'CALCULATING PATH...' : 'PLAN ROUTE'}
                 </button>
             </div>
 
-            <div className="p-4 md:p-6 rounded-2xl border mb-4 bg-slate-950 min-h-[200px]">
+            <div className="space-y-6">
                 {routeError && (
-                    <div className="bg-red-500/20 text-red-400 p-5 rounded-xl border border-red-500/30 font-bold mb-4 text-center">
+                    <div className="bg-soft-coral/10 text-soft-coral p-6 rounded-3xl border border-soft-coral/20 font-black text-xs uppercase tracking-widest text-center animate-pulse">
                         {routeError}
                     </div>
                 )}
 
                 {itinerary.length === 0 && !routeError && !isCalculating && (
-                    <div className="text-slate-500 h-full flex items-center justify-center font-medium italic mt-8 text-center px-4">
-                        Search a destination to generate an optimized itinerary with safe highway offsets.
+                    <div className="text-slate-600 flex flex-col items-center justify-center font-black italic mt-12 text-center px-8 uppercase tracking-widest text-[10px] opacity-50">
+                        <svg className="w-12 h-12 mb-4 opacity-20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                        Ready for highway analysis
                     </div>
                 )}
                 
                 {itinerary.length > 0 && (
-                    <div className="flex flex-col animation-fade-in relative pl-4 mt-2">
-                        <div className="absolute left-[27px] top-4 bottom-8 w-1 bg-slate-800 rounded-full"></div>
+                    <div className="space-y-4 animate-fade-in relative pl-8 pb-4">
+                        <div className="absolute left-[15px] top-6 bottom-6 w-[2px] bg-gradient-to-b from-electric-mint via-slate-800 to-transparent"></div>
+                        
                         {itinerary.map((point, idx) => (
-                            <div key={idx} className="relative z-10 flex gap-4 md:gap-6 mb-8 items-start">
-                                <div className={`w-8 h-8 rounded-full border-4 border-slate-950 flex items-center justify-center shrink-0 mt-1 shadow-xl
-                                    ${point.type === 'start' ? 'bg-sky-500' : point.type === 'stop' ? 'bg-amber-500' : 'bg-emerald-500'}
-                                `}>
-                                    <div className="w-2 h-2 rounded-full bg-slate-950"></div>
-                                </div>
-                                <div className="flex-1 bg-slate-800/60 p-4 rounded-2xl border border-white/5 shadow-md">
-                                    <h3 className="font-bold text-lg text-white mb-1 leading-tight">{point.name}</h3>
-                                    {point.type === 'start' && <div className="text-sm text-slate-400">Start with <span className="text-sky-400 font-bold">{point.arrivalSOC.toFixed(1)}%</span> SOC</div>}
-                                    {point.type === 'stop' && (
-                                        <div className="text-sm text-slate-300">
-                                            Arrive with <span className="text-amber-400 font-bold">{point.arrivalSOC.toFixed(1)}%</span> after {point.distanceFromPrev.toFixed(0)}km<br/>
-                                            <span className="text-emerald-400 font-bold text-xs uppercase bg-emerald-400/10 px-2 py-0.5 rounded mt-2 inline-block">Charge {point.chargeTimeMins} mins to reach 80%</span>
+                            <div key={idx} className="relative group">
+                                <div className={`absolute -left-[31px] top-2 w-4 h-4 rounded-full border-4 border-midnight-deep z-10 transition-transform group-hover:scale-125
+                                    ${point.type === 'start' ? 'bg-sky-400' : point.type === 'stop' ? 'bg-amber-400' : 'bg-electric-mint'}
+                                `}></div>
+                                
+                                <div className="bg-white/[0.03] p-5 rounded-3xl border border-white/5 transition-all hover:bg-white/[0.06] hover:border-white/10">
+                                    <div className="flex justify-between items-start mb-2">
+                                        <h3 className="font-black text-white uppercase italic tracking-tighter">{point.name}</h3>
+                                        <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">
+                                            {point.cumulativeDistance > 0 ? `${point.cumulativeDistance.toFixed(0)} km` : 'START'}
+                                        </span>
+                                    </div>
+                                    
+                                    {point.type === 'start' && (
+                                        <div className="text-[11px] font-black text-slate-500 uppercase tracking-widest flex items-center gap-2">
+                                            ENERGY: <span className="text-white">{point.arrivalSOC.toFixed(0)}%</span>
                                         </div>
                                     )}
+                                    
+                                    {point.type === 'stop' && (
+                                        <div className="space-y-3">
+                                            <div className="text-[11px] font-black text-slate-500 uppercase tracking-widest flex items-center gap-2">
+                                                ARRIVAL: <span className="text-white">{point.arrivalSOC.toFixed(0)}%</span>
+                                            </div>
+                                            <div className="bg-electric-mint/10 border border-electric-mint/20 text-electric-mint text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-xl inline-flex items-center gap-2">
+                                                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                                Charge {point.chargeTimeMins}m to 80%
+                                            </div>
+                                        </div>
+                                    )}
+                                    
                                     {point.type === 'destination' && (
-                                        <div className="text-sm text-slate-300">
-                                            Reach with <span className="text-emerald-400 font-bold">{point.arrivalSOC.toFixed(1)}%</span> SOC<br/>
-                                            <span className="text-slate-500 text-xs font-bold mt-1 block">Trip Distance: {point.cumulativeDistance.toFixed(0)} km</span>
+                                        <div className="text-[11px] font-black text-slate-500 uppercase tracking-widest flex items-center gap-2">
+                                            RESERVE: <span className="text-electric-mint">{point.arrivalSOC.toFixed(0)}%</span>
                                         </div>
                                     )}
                                 </div>
@@ -258,18 +267,18 @@ export default function PlanTrip({ userLoc, chargers, batteryPercent, aec, safeR
                         ))}
                     </div>
                 )}
-            </div>
 
-            {itinerary.length > 0 && (
-                 <a 
-                    href={generateGoogleMapsURL()}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-lg text-center py-4 rounded-xl transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)]"
-                 >
-                     Ultimate Navigation Mode ↗
-                 </a>
-            )}
+                {itinerary.length > 0 && (
+                     <a 
+                        href={generateGoogleMapsURL()}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-automotive w-full bg-electric-mint text-midnight-deep text-sm font-black italic tracking-widest uppercase shadow-[0_0_40px_rgba(45,212,191,0.2)] hover:scale-[1.02] active:scale-95 transition-all"
+                     >
+                         ULTIMATE NAVIGATION MODE
+                     </a>
+                )}
+            </div>
         </div>
     );
 }

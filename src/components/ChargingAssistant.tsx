@@ -48,152 +48,144 @@ export default function ChargingAssistant({ batteryPercent, setBatteryPercent, a
         : '0m';
 
     return (
-        <div className="bg-slate-900/80 p-6 md:p-8 rounded-3xl shadow-2xl border-2 border-slate-700/50 backdrop-blur-md mb-6 transition-all w-full">
-            <div className="flex justify-between items-center mb-2 cursor-pointer" onClick={() => setIsCollapsed(!isCollapsed)}>
-                <h2 className="text-xl md:text-2xl font-bold flex items-center gap-3 text-white m-0">
-                    <svg className="w-6 h-6 md:w-8 md:h-8 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                    Charging Assistant
+        <div className="glass-card p-6 md:p-8 rounded-[2.5rem] shadow-2xl w-full">
+            <div className="flex justify-between items-center mb-4 cursor-pointer" onClick={() => setIsCollapsed(!isCollapsed)}>
+                <h2 className="text-xl md:text-2xl font-black flex items-center gap-3 text-white m-0 uppercase italic tracking-tighter">
+                    <svg className="w-6 h-6 md:w-8 md:h-8 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                    Smart Refill
                 </h2>
                 <div className="flex items-center gap-4">
                     {isCollapsed && (
-                        <div className="text-amber-400 font-bold text-sm md:text-base">
-                            Estimate: ₹{activeCost.toFixed(2)}
+                        <div className="text-amber-400 font-black tracking-tighter text-xl">
+                            ₹{activeCost.toFixed(0)}
                         </div>
                     )}
-                    <button className="text-slate-400 hover:text-white transition-colors" aria-label="Toggle Collapse">
+                    <button className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors" aria-label="Toggle Collapse">
                         {isCollapsed ? (
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                            <svg className="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" /></svg>
                         ) : (
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" /></svg>
+                            <svg className="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 15l7-7 7 7" /></svg>
                         )}
                     </button>
                 </div>
             </div>
 
             {!isCollapsed && (
-                <div className="mt-6 animation-fade-in">
+                <div className="mt-8 animate-fade-in space-y-8">
                     
-                    {/* Top Shared Form Row */}
-                    <div className="grid grid-cols-2 gap-4 mb-4">
-                        <div className="bg-slate-950/40 p-3 rounded-xl flex flex-col border border-slate-700/30">
-                            <label className="text-slate-400 text-xs mb-1 font-medium">Synced Battery (%)</label>
+                    {/* Synced Telemetrics Row */}
+                    <div className="grid grid-cols-2 gap-4">
+                        <div className="bg-white/[0.02] p-4 rounded-2xl flex flex-col border border-white/5 shadow-inner">
+                            <label className="text-slate-500 text-[9px] uppercase tracking-widest mb-1 font-black opacity-60">Synced SoC (%)</label>
                             <input 
-                                type="number" min="0" max="100" 
+                                type="number" 
                                 value={batteryPercent} 
                                 onChange={(e) => setBatteryPercent(Number(e.target.value))}
-                                className="w-full bg-transparent text-emerald-400 font-bold outline-none border-b border-slate-600 focus:border-emerald-500 pb-1"
+                                className="w-full bg-transparent text-white text-lg font-black focus:text-electric-mint outline-none transition-all text-left"
                             />
                         </div>
-                        <div className="bg-slate-950/40 p-3 rounded-xl flex flex-col border border-slate-700/30">
-                            <label className="text-slate-400 text-xs mb-1 font-medium">Synced AEC (Wh/km)</label>
+                        <div className="bg-white/[0.02] p-4 rounded-2xl flex flex-col border border-white/5 shadow-inner">
+                            <label className="text-slate-500 text-[9px] uppercase tracking-widest mb-1 font-black opacity-60">Synced AEC (Wh/km)</label>
                             <input 
-                                type="number" min="50" max="300" 
+                                type="number" 
                                 value={aec} 
                                 onChange={(e) => setAec(Number(e.target.value))}
-                                className="w-full bg-transparent text-sky-400 font-bold outline-none border-b border-slate-600 focus:border-sky-500 pb-1"
+                                className="w-full bg-transparent text-white text-lg font-black focus:text-electric-mint outline-none transition-all text-left"
                             />
                         </div>
                     </div>
 
-                    {/* Mode Toggle */}
-                    <div className="flex bg-slate-950 p-1 rounded-xl mb-6 border border-slate-800">
+                    {/* Mode Toggle with Glass Effect */}
+                    <div className="flex bg-black/30 p-1.5 rounded-2xl border border-white/5">
                         <button 
-                            className={`flex-1 py-2 md:py-2.5 text-sm font-bold rounded-lg transition-colors ${mode === 'target' ? 'bg-amber-500/20 text-amber-400' : 'text-slate-400 hover:text-white'}`}
+                            className={`flex-1 btn-automotive rounded-xl text-sm font-black transition-all duration-300 ${mode === 'target' ? 'bg-white/10 text-white shadow-xl' : 'text-slate-500 hover:text-slate-300'}`}
                             onClick={() => setMode('target')}
                         >
-                            Charge by Target
+                            BY TARGET
                         </button>
                         <button 
-                            className={`flex-1 py-2 md:py-2.5 text-sm font-bold rounded-lg transition-colors ${mode === 'amount' ? 'bg-amber-500/20 text-amber-400' : 'text-slate-400 hover:text-white'}`}
+                            className={`flex-1 btn-automotive rounded-xl text-sm font-black transition-all duration-300 ${mode === 'amount' ? 'bg-white/10 text-white shadow-xl' : 'text-slate-500 hover:text-slate-300'}`}
                             onClick={() => setMode('amount')}
                         >
-                            Charge by Amount
+                            BY AMOUNT
                         </button>
                     </div>
 
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         
                         {mode === 'target' && (
-                            <div className="bg-slate-950/50 p-4 rounded-2xl flex flex-col border border-slate-700/30">
-                                <label className="text-slate-400 text-xs md:text-sm mb-2 font-medium">Target %</label>
+                            <div className="bg-white/[0.02] p-6 rounded-3xl flex flex-col border border-white/5 shadow-inner">
+                                <label className="text-slate-500 text-[10px] uppercase tracking-widest mb-4 font-black">Target %</label>
                                 <input 
-                                    type="number" min="0" max="100" 
+                                    type="number"
                                     value={targetPercent} 
                                     onChange={(e) => setTargetPercent(Number(e.target.value))}
-                                    className="w-full bg-slate-800 text-white font-bold px-3 py-2 rounded-xl focus:ring-2 focus:ring-amber-500 outline-none border border-slate-600 transition-all text-center"
+                                    className="w-full bg-transparent text-white text-3xl font-black focus:text-electric-mint outline-none transition-all text-left"
                                 />
                             </div>
                         )}
 
                         {mode === 'amount' && (
-                            <div className="bg-slate-950/50 p-4 rounded-2xl flex flex-col border border-slate-700/30">
-                                <label className="text-slate-400 text-xs md:text-sm mb-2 font-medium">Recharge Amount (₹)</label>
+                            <div className="bg-white/[0.02] p-6 rounded-3xl flex flex-col border border-white/5 shadow-inner">
+                                <label className="text-slate-500 text-[10px] uppercase tracking-widest mb-4 font-black">Amount (₹)</label>
                                 <input 
-                                    type="number" min="0" 
+                                    type="number"
                                     value={rechargeAmount} 
                                     onChange={(e) => setRechargeAmount(Number(e.target.value))}
-                                    className="w-full bg-slate-800 text-amber-400 font-bold px-3 py-2 rounded-xl focus:ring-2 focus:ring-amber-500 outline-none border border-amber-500/50 transition-all text-center"
+                                    className="w-full bg-transparent text-white text-3xl font-black focus:text-electric-mint outline-none transition-all text-left"
                                 />
                             </div>
                         )}
 
-                        {/* Shared Standard Inputs */}
-                        <div className="bg-slate-950/50 p-4 rounded-2xl flex flex-col border border-slate-700/30">
-                            <label className="text-slate-400 text-xs md:text-sm mb-2 font-medium">Cost / kWh (₹)</label>
+                        <div className="bg-white/[0.02] p-6 rounded-3xl flex flex-col border border-white/5 shadow-inner">
+                            <label className="text-slate-500 text-[10px] uppercase tracking-widest mb-4 font-black">Cost / kWh (₹)</label>
                             <input 
-                                type="number" min="0" 
+                                type="number"
                                 value={costPerUnit} 
                                 onChange={(e) => setCostPerUnit(Number(e.target.value))}
-                                className="w-full bg-slate-800 text-white font-bold px-3 py-2 rounded-xl focus:ring-2 focus:ring-amber-500 outline-none border border-slate-600 transition-all text-center"
+                                className="w-full bg-transparent text-white text-3xl font-black focus:text-electric-mint outline-none transition-all text-left"
                             />
                         </div>
                         
-                        <div className="bg-slate-950/50 p-4 rounded-2xl flex flex-col border border-slate-700/30 col-span-2 md:col-span-1">
-                            <label className="text-slate-400 text-xs md:text-sm mb-2 font-medium">Speed (kW)</label>
+                        <div className="bg-white/[0.02] p-6 rounded-3xl flex flex-col border border-white/5 shadow-inner">
+                            <label className="text-slate-500 text-[10px] uppercase tracking-widest mb-4 font-black">Charger (kW)</label>
                             <input 
-                                type="number" min="1" 
+                                type="number"
                                 value={chargerSpeed} 
                                 onChange={(e) => setChargerSpeed(Number(e.target.value))}
-                                className="w-full bg-slate-800 text-white font-bold px-3 py-2 rounded-xl focus:ring-2 focus:ring-amber-500 outline-none border border-slate-600 transition-all text-center"
+                                className="w-full bg-transparent text-white text-3xl font-black focus:text-electric-mint outline-none transition-all text-left"
                             />
                         </div>
                     </div>
 
-                    <div className={`p-6 rounded-2xl border mb-4 flex flex-col items-center justify-center text-center ${mode === 'target' ? 'bg-amber-900/20 border-amber-500/30' : 'bg-sky-900/20 border-sky-500/30'}`}>
-                        {mode === 'target' ? (
-                            <div className="text-amber-400/90 text-sm md:text-base font-bold tracking-wide">
-                                You need to purchase <span className="text-white text-xl mx-1">{activeUnits.toFixed(2)}</span> units to reach your target.
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="bg-white/[0.03] p-8 rounded-[2rem] border border-white/5 flex flex-col items-center justify-center text-center">
+                            <div className="text-slate-500 text-[10px] mb-3 font-black tracking-widest uppercase opacity-70">ENERGY GAIN</div>
+                            <div className="text-5xl font-[900] text-white tracking-tighter flex items-baseline gap-2">
+                                {activeUnits.toFixed(1)}
+                                <span className="text-lg font-black text-electric-mint uppercase italic">kWh</span>
                             </div>
-                        ) : (
-                            <div className="flex flex-col gap-2">
-                                <div className="text-sky-400/90 text-sm md:text-base font-bold tracking-wide">
-                                    You will get <span className="text-white text-xl mx-1">{activeUnits.toFixed(2)}</span> units.
+                            {mode === 'amount' && (
+                                <div className="text-xs font-bold text-slate-400 mt-2">
+                                    Target reached: <span className="text-white">{amountFinalPercent.toFixed(0)}%</span>
                                 </div>
-                                <div className="text-slate-300 font-bold">
-                                    Battery will reach <span className="text-white text-lg">{amountFinalPercent.toFixed(1)}%</span>
-                                </div>
-                            </div>
-                        )}
-                    </div>
+                            )}
+                        </div>
 
-                    <div className={`grid gap-4 ${mode === 'amount' ? 'grid-cols-2 md:grid-cols-2' : 'grid-cols-1 md:grid-cols-2'}`}>
-                        {mode === 'target' && (
-                            <div className="bg-slate-800/60 p-5 rounded-2xl border border-slate-700/50 flex flex-col items-center justify-center">
-                                <div className="text-slate-400 text-sm mb-1 font-medium">Estimated Cost</div>
-                                <div className="text-3xl font-black text-amber-400 tracking-tight">₹{activeCost.toFixed(2)}</div>
+                        <div className="bg-white/[0.03] p-8 rounded-[2rem] border border-white/5 flex flex-col items-center justify-center text-center">
+                            <div className="text-slate-500 text-[10px] mb-3 font-black tracking-widest uppercase opacity-70">
+                                {mode === 'target' ? 'TOTAL COST' : 'BONUS RANGE'}
                             </div>
-                        )}
-
-                        {mode === 'amount' && (
-                            <div className="bg-slate-800/60 p-5 rounded-2xl border border-slate-700/50 flex flex-col items-center justify-center">
-                                <div className="text-slate-400 text-sm mb-1 font-medium">Bonus Range</div>
-                                <div className="text-3xl font-black text-sky-400 tracking-tight">+{amountRangeBonus.toFixed(1)} <span className="text-lg">km</span></div>
+                            <div className="text-5xl font-[900] text-white tracking-tighter flex items-baseline gap-2">
+                                {mode === 'target' ? activeCost.toFixed(0) : amountRangeBonus.toFixed(0)}
+                                <span className="text-lg font-black text-electric-mint uppercase italic">
+                                    {mode === 'target' ? '₹' : 'km'}
+                                </span>
                             </div>
-                        )}
-
-                        <div className="bg-slate-800/60 p-5 rounded-2xl border border-slate-700/50 flex flex-col items-center justify-center">
-                            <div className="text-slate-400 text-sm mb-1 font-medium">Wait Time</div>
-                            <div className="text-3xl font-black text-emerald-400 tracking-tight">{displayTime}</div>
+                            <div className="text-xs font-bold text-slate-400 mt-2 flex items-center gap-2">
+                                <svg className="w-3 h-3 text-electric-mint" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                {displayTime} wait
+                            </div>
                         </div>
                     </div>
                 </div>

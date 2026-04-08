@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface CarStatusProps {
     batteryPercent: number;
@@ -20,90 +20,110 @@ export default function CarStatus({
     safeRange
 }: CarStatusProps) {
     const [isCollapsed, setIsCollapsed] = useState(false);
+    const [animatedRange, setAnimatedRange] = useState(0);
 
-    // Format safe range nicely
-    const displaySafeRange = safeRange.toFixed(1);
+    // Smooth count-up animation for Safe Range
+    useEffect(() => {
+        const duration = 1000;
+        const start = animatedRange;
+        const end = safeRange;
+        const startTime = performance.now();
+
+        const animate = (now: number) => {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const easeOutQuad = (t: number) => t * (2 - t);
+            const current = start + (end - start) * easeOutQuad(progress);
+            
+            setAnimatedRange(current);
+
+            if (progress < 1) {
+                requestAnimationFrame(animate);
+            }
+        };
+
+        requestAnimationFrame(animate);
+    }, [safeRange]);
 
     return (
-        <div className="bg-slate-900/80 p-6 md:p-8 rounded-3xl shadow-2xl border-2 border-slate-700/50 backdrop-blur-md mb-6 transition-all w-full">
-            <div className="flex justify-between items-center mb-2 cursor-pointer" onClick={() => setIsCollapsed(!isCollapsed)}>
-                <h2 className="text-xl md:text-2xl font-bold flex items-center gap-3 text-white m-0">
-                    <svg className="w-6 h-6 md:w-8 md:h-8 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                    Trip Telemetrics
+        <div className="glass-card p-6 md:p-8 rounded-[2.5rem] shadow-2xl w-full">
+            <div className="flex justify-between items-center mb-4 cursor-pointer" onClick={() => setIsCollapsed(!isCollapsed)}>
+                <h2 className="text-xl md:text-2xl font-black flex items-center gap-3 text-white m-0 uppercase italic tracking-tighter">
+                    <svg className="w-6 h-6 md:w-8 md:h-8 text-electric-mint" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                    Telemetrics
                 </h2>
                 <div className="flex items-center gap-4">
                     {isCollapsed && (
-                        <div className="text-emerald-400 font-black tracking-tight text-lg">
-                            Safe: {displaySafeRange} km
+                        <div className="text-electric-mint font-black tracking-tighter text-xl">
+                            {animatedRange.toFixed(0)} <span className="text-xs uppercase">km</span>
                         </div>
                     )}
-                    <button className="text-slate-400 hover:text-white transition-colors" aria-label="Toggle Collapse">
+                    <button className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors" aria-label="Toggle Collapse">
                         {isCollapsed ? (
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                            <svg className="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" /></svg>
                         ) : (
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" /></svg>
+                            <svg className="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 15l7-7 7 7" /></svg>
                         )}
                     </button>
                 </div>
             </div>
 
             {!isCollapsed && (
-                <div className="mt-6 animation-fade-in">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                <div className="mt-8 animate-fade-in space-y-8">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         {/* Battery Input */}
-                        <div className="bg-slate-950/50 p-5 rounded-2xl flex flex-col border border-slate-700/30">
-                            <label className="text-slate-400 text-sm mb-3 font-medium">
-                                Current Battery (%)
+                        <div className="bg-white/[0.02] p-6 rounded-3xl flex flex-col border border-white/5 shadow-inner">
+                            <label className="text-slate-500 text-[10px] uppercase tracking-widest mb-4 font-black">
+                                Battery (%)
                             </label>
                             <input 
                                 type="number" 
-                                min="0" 
-                                max="100" 
                                 value={batteryPercent} 
                                 onChange={(e) => setBatteryPercent(Number(e.target.value))}
-                                className="w-full bg-slate-800 text-white font-bold px-4 py-2 rounded-xl focus:ring-2 focus:ring-sky-500 outline-none border border-slate-600 transition-all text-center"
+                                className="w-full bg-transparent text-white text-3xl font-black focus:text-electric-mint outline-none transition-all text-left"
                             />
                         </div>
 
                         {/* AEC Input */}
-                        <div className="bg-slate-950/50 p-5 rounded-2xl flex flex-col border border-slate-700/30">
-                            <label className="text-slate-400 text-sm mb-3 font-medium">
-                                Current AEC (Wh/km)
+                        <div className="bg-white/[0.02] p-6 rounded-3xl flex flex-col border border-white/5 shadow-inner">
+                            <label className="text-slate-500 text-[10px] uppercase tracking-widest mb-4 font-black">
+                                AEC (Wh/km)
                             </label>
                             <input 
                                 type="number" 
-                                min="50" 
-                                max="300" 
                                 value={aec} 
                                 onChange={(e) => setAec(Number(e.target.value))}
-                                className="w-full bg-slate-800 text-white font-bold px-4 py-2 rounded-xl focus:ring-2 focus:ring-sky-500 outline-none border border-slate-600 transition-all text-center"
+                                className="w-full bg-transparent text-white text-3xl font-black focus:text-electric-mint outline-none transition-all text-left"
                             />
                         </div>
 
                         {/* Dash Range Input */}
-                        <div className="bg-slate-950/50 p-5 rounded-2xl flex flex-col border border-slate-700/30">
-                            <label className="text-slate-400 text-sm mb-3 font-medium">
-                                Dash Range (km)
+                        <div className="bg-white/[0.02] p-6 rounded-3xl flex flex-col border border-white/5 shadow-inner">
+                            <label className="text-slate-500 text-[10px] uppercase tracking-widest mb-4 font-black">
+                                Dash (km)
                             </label>
                             <input 
                                 type="number" 
-                                min="0" 
                                 value={dashRange} 
                                 onChange={(e) => setDashRange(Number(e.target.value))}
-                                className="w-full bg-slate-800 text-white font-bold px-4 py-2 rounded-xl focus:ring-2 focus:ring-slate-500 outline-none border border-slate-600 transition-all text-center"
+                                className="w-full bg-transparent text-white text-3xl font-black focus:text-electric-mint outline-none transition-all text-left"
                             />
                         </div>
                     </div>
 
-                    <div className="bg-emerald-900/20 p-6 rounded-2xl border border-emerald-500/30 flex flex-col items-center justify-center">
-                        {batteryPercent <= 20 && (
-                            <div className="w-full bg-red-900/40 border border-red-500/50 text-red-400 font-bold p-3 rounded-xl mb-4 text-center shadow-[0_0_15px_rgba(239,68,68,0.2)]">
-                                ⚠️ CRITICAL: Battery below safety buffer. Charge immediately!
+                    <div className="relative group">
+                        <div className="absolute -inset-1 bg-gradient-to-r from-electric-mint/20 to-transparent rounded-[2rem] blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                        <div className="relative bg-white/[0.02] p-8 rounded-[2rem] border border-white/5 flex flex-col items-center justify-center overflow-hidden">
+                            {batteryPercent <= 20 && (
+                                <div className="w-full bg-soft-coral/10 border border-soft-coral/20 text-soft-coral text-[11px] font-black uppercase tracking-widest py-3 rounded-2xl mb-6 text-center animate-pulse">
+                                    ⚠️ Critically Low Range Logic
+                                </div>
+                            )}
+                            <div className="text-slate-500 text-[10px] md:text-xs mb-2 font-black tracking-[0.3em] uppercase opacity-70">Calculated Safe Range</div>
+                            <div className="text-6xl md:text-8xl font-[900] text-white tracking-tighter flex items-baseline gap-2">
+                                {animatedRange.toFixed(0)}
+                                <span className="text-xl md:text-2xl font-black text-electric-mint uppercase italic">km</span>
                             </div>
-                        )}
-                        <div className="text-emerald-400/80 text-lg md:text-xl mb-1 font-bold tracking-wide uppercase text-center mt-2">Safe Reachable Range (with 20% Buffer)</div>
-                        <div className="text-5xl md:text-6xl font-black text-emerald-400 tracking-tighter text-center">
-                            {displaySafeRange} <span className="text-2xl font-bold">km</span>
                         </div>
                     </div>
                 </div>

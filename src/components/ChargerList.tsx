@@ -49,78 +49,80 @@ export default function ChargerList({ userLoc, chargers, safeRange, onAddCharger
     };
 
     return (
-        <div className="bg-slate-900/80 p-6 md:p-8 rounded-3xl shadow-2xl border-2 border-slate-700/50 backdrop-blur-md mb-6 transition-all w-full">
-            <div className="flex justify-between items-center mb-6">
-                <h2 className="text-xl md:text-2xl font-bold flex items-center gap-3 text-white m-0">
-                    <svg className="w-6 h-6 md:w-8 md:h-8 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" /></svg>
-                    My Shortlisted
+        <div className="glass-card p-6 md:p-8 rounded-[2.5rem] shadow-2xl w-full transition-all">
+            <div className="flex justify-between items-center mb-8">
+                <h2 className="text-xl md:text-2xl font-black flex items-center gap-3 text-white m-0 uppercase italic tracking-tighter">
+                    <svg className="w-6 h-6 md:w-8 md:h-8 text-electric-mint" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 6h16M4 10h16M4 14h16M4 18h16" /></svg>
+                    Charger Pool
                 </h2>
                 <button 
                     onClick={() => setShowForm(!showForm)}
-                    className="bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-bold px-4 py-2 rounded-xl transition-colors shadow-lg active:scale-95"
+                    className={`btn-automotive text-xs font-black uppercase tracking-widest transition-all ${showForm ? 'bg-soft-coral/10 text-soft-coral border border-soft-coral/20' : 'bg-white/10 text-white border border-white/10'}`}
                 >
-                    {showForm ? 'Cancel' : '+ Add Charger'}
+                    {showForm ? 'DISCARD' : '+ ADD NEW'}
                 </button>
             </div>
 
             {showForm && (
-                <form onSubmit={handleSubmit} className="bg-slate-950/60 p-6 rounded-2xl border border-indigo-500/30 mb-8 animation-fade-in space-y-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label className="text-slate-400 text-xs mb-1 block">Charger Name</label>
+                <form onSubmit={handleSubmit} className="bg-black/40 p-6 rounded-3xl border border-white/5 mb-8 animate-fade-in space-y-6 shadow-inner">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                            <label className="text-slate-500 text-[10px] uppercase tracking-widest font-black ml-2">Location Name</label>
                             <input 
                                 required
                                 value={formData.name}
                                 onChange={e => setFormData({...formData, name: e.target.value})}
-                                placeholder="e.g. Zeon Mall" 
-                                className="w-full bg-slate-800 text-white p-3 rounded-xl border border-slate-700 outline-none focus:border-indigo-500"
+                                placeholder="E.G. ZEON MALL HUB" 
+                                className="w-full bg-white/[0.03] text-white p-4 rounded-2xl border border-white/5 outline-none focus:border-electric-mint transition-all"
                             />
                         </div>
-                        <div>
-                            <label className="text-slate-400 text-xs mb-1 block">Speed / Details</label>
+                        <div className="space-y-2">
+                            <label className="text-slate-500 text-[10px] uppercase tracking-widest font-black ml-2">Charger Type</label>
                             <input 
                                 required
                                 value={formData.capacity}
                                 onChange={e => setFormData({...formData, capacity: e.target.value})}
-                                placeholder="e.g. 60kW CCS2" 
-                                className="w-full bg-slate-800 text-white p-3 rounded-xl border border-slate-700 outline-none focus:border-indigo-500"
+                                placeholder="E.G. 60KW CCS2" 
+                                className="w-full bg-white/[0.03] text-white p-4 rounded-2xl border border-white/5 outline-none focus:border-electric-mint transition-all"
                             />
                         </div>
-                        <div>
-                            <label className="text-slate-400 text-xs mb-1 block">Latitude</label>
+                        <div className="space-y-2">
+                            <label className="text-slate-500 text-[10px] uppercase tracking-widest font-black ml-2">Latitude</label>
                             <input 
                                 required
                                 type="number" step="any"
                                 value={formData.lat}
                                 onChange={e => setFormData({...formData, lat: e.target.value})}
                                 placeholder="15.1234" 
-                                className="w-full bg-slate-800 text-white p-3 rounded-xl border border-slate-700 outline-none focus:border-indigo-500"
+                                className="w-full bg-white/[0.03] text-white p-4 rounded-2xl border border-white/5 outline-none focus:border-electric-mint transition-all"
                             />
                         </div>
-                        <div>
-                            <label className="text-slate-400 text-xs mb-1 block">Longitude</label>
+                        <div className="space-y-2">
+                            <label className="text-slate-500 text-[10px] uppercase tracking-widest font-black ml-2">Longitude</label>
                             <input 
                                 required
                                 type="number" step="any"
                                 value={formData.lng}
                                 onChange={e => setFormData({...formData, lng: e.target.value})}
                                 placeholder="75.1234" 
-                                className="w-full bg-slate-800 text-white p-3 rounded-xl border border-slate-700 outline-none focus:border-indigo-500"
+                                className="w-full bg-white/[0.03] text-white p-4 rounded-2xl border border-white/5 outline-none focus:border-electric-mint transition-all"
                             />
                         </div>
                     </div>
-                    <button type="submit" className="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl shadow-lg transition-all">
-                        Save to My List
+                    <button type="submit" className="w-full btn-automotive bg-electric-mint text-midnight-deep font-black uppercase tracking-widest text-sm italic shadow-xl">
+                        REGISTER CHARGER
                     </button>
                 </form>
             )}
 
             {shortlistedChargersList.length === 0 ? (
-                <p className="text-slate-500 italic text-sm text-center py-6">Locating chargers...</p>
+                <div className="flex flex-col items-center justify-center py-12 opacity-30">
+                    <svg className="w-16 h-16 mb-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
+                    <p className="text-slate-500 italic text-[10px] font-black uppercase tracking-widest">Awaiting pool injection...</p>
+                </div>
             ) : (
-                <div className="space-y-4 max-h-[65vh] overflow-y-auto pr-2 custom-scrollbar pb-6">
-                    {shortlistedChargersList
-                        .map(charger => {
+                <div className="space-y-4 max-h-[50vh] overflow-y-auto pr-4 custom-scrollbar">
+                    {shortlistedChargersList.map(charger => {
                         const isReachable = charger.distance <= safeRange;
                         return (
                             <a 
@@ -128,24 +130,25 @@ export default function ChargerList({ userLoc, chargers, safeRange, onAddCharger
                                 href={`https://www.google.com/maps/dir/?api=1&origin=${userLoc![0]},${userLoc![1]}&destination=${charger.lat},${charger.lng}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className={`p-4 rounded-xl flex items-center justify-between border transition-all cursor-pointer group ${isReachable ? 'bg-slate-800/60 border-slate-700/50 hover:bg-slate-700/80 hover:border-indigo-500/50' : 'bg-red-900/10 border-red-900/30 opacity-75 grayscale'}`}
+                                className={`p-6 rounded-[2rem] flex items-center justify-between border transition-all animate-fade-in group shadow-sm ${isReachable ? 'bg-white/[0.02] border-white/5 hover:bg-white/[0.05] hover:border-white/10' : 'bg-soft-coral/5 border-soft-coral/10 grayscale opacity-60'}`}
                             >
-                                <div className="flex flex-col overflow-hidden max-w-[65%]">
-                                    <span className={`font-semibold line-clamp-1 transition-colors ${isReachable ? 'text-white group-hover:text-indigo-400' : 'text-red-300'}`}>{charger.name}</span>
-                                    <span className="text-slate-400 text-sm mt-1">{charger.capacity}</span>
+                                <div className="space-y-1 max-w-[60%]">
+                                    <h3 className={`font-black uppercase italic tracking-tighter truncate transition-colors ${isReachable ? 'text-white' : 'text-soft-coral group-hover:text-red-400'}`}>{charger.name}</h3>
+                                    <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{charger.capacity}</p>
                                 </div>
-                                <div className="flex flex-col items-end whitespace-nowrap ml-4">
-                                    <span className="font-bold text-slate-300">
-                                        {charger.distance.toFixed(1)} km
-                                    </span>
+                                <div className="text-right flex flex-col items-end gap-2">
+                                    <div className="text-xl font-black text-white tracking-tighter">
+                                        {charger.distance.toFixed(0)}
+                                        <span className="text-[10px] font-black uppercase italic text-slate-500 ml-1">KM</span>
+                                    </div>
                                     {isReachable ? (
-                                        <span className="text-indigo-400 text-xs font-bold bg-indigo-400/10 px-2 py-1 rounded mt-1 flex items-center gap-1 group-hover:bg-indigo-400/20 transition-colors">
-                                            Navigate ↗
-                                        </span>
+                                        <div className="text-electric-mint text-[9px] font-black uppercase tracking-widest px-3 py-1 bg-electric-mint/10 rounded-full border border-electric-mint/20">
+                                            REACHABLE
+                                        </div>
                                     ) : (
-                                        <span className="text-red-400 text-xs font-bold bg-red-400/10 px-2 py-1 rounded mt-1">
-                                            Unreachable
-                                        </span>
+                                        <div className="text-soft-coral text-[9px] font-black uppercase tracking-widest px-3 py-1 bg-soft-coral/10 rounded-full border border-soft-coral/20">
+                                            OUT OF RANGE
+                                        </div>
                                     )}
                                 </div>
                             </a>
